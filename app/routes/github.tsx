@@ -1,5 +1,5 @@
 const Github = () => {
-  return <div>G</div>;
+  return <div>Github</div>;
 };
 
 export default Github;
