@@ -32,12 +32,7 @@ const AddTask = () => {
         type="text"
         placeholder="Enter task..."
       />
-      <Button
-        onClick={handleAddTask}
-        type="button"
-        variant="outline"
-        className="ml-auto"
-      >
+      <Button onClick={handleAddTask} type="button" className="ml-auto">
         Submit
       </Button>
     </div>

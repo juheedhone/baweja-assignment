@@ -2,6 +2,7 @@ import { TrashIcon } from "@radix-ui/react-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "~/redux/slice/todoSlice";
 import type { RootState } from "~/redux/store";
+import { Button } from "./ui/button";
 
 const TaskList = () => {
   const todos = useSelector((state: RootState) => state.todoSlice.items);
@@ -13,16 +14,22 @@ const TaskList = () => {
   };
 
   return (
-    <div className="space-y-2 mt-4">
+    <div className="mt-20 space-y-4">
       {todos.map((t) => (
         <div
-          className="rounded-xl p-4 border border-gray-500 w-52 shadow-2xl flex justify-between"
+          className="flex justify-between items-center p-4 border border-gray-200 hover:border-gray-500 h-20 shadow rounded-xl w-[80%] mx-auto"
           key={t.id}
         >
-          {t.name}
-          <button onClick={() => handleDeleteTask(t.id)} type="button">
-            {<TrashIcon />}
-          </button>
+          <p className="text-lg font-semibold">{t.name}</p>
+          <Button
+            onClick={() => handleDeleteTask(t.id)}
+            type="button"
+            variant="secondary"
+            size="icon"
+            className="text-red-600 hover:bg-red-50"
+          >
+            <TrashIcon className="size-6" />
+          </Button>
         </div>
       ))}
     </div>
