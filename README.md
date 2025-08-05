@@ -78,4 +78,4 @@ pnpm build
 
 ### Deployed Link
 
-link: <repository-url>
+link: <https://baweja-assignment.vercel.app/>
