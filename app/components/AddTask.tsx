@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "sonner";
 import { addItem } from "~/redux/slice/todoSlice";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 const AddTask = () => {
   const [name, setName] = useState("");
@@ -8,29 +11,35 @@ const AddTask = () => {
   const dispatch = useDispatch();
 
   const handleAddTask = () => {
-    if (!name.length) return;
+    if (!name.length) {
+      toast.error("Task name is required");
+      return;
+    }
+
     dispatch(addItem(name));
+    toast.success("Task added successfully!");
   };
 
   return (
-    <div>
-      <label className="block font-semibold mb-1" htmlFor="name">
+    <div className="flex flex-col">
+      <label className="block mb-2 font-semibold" htmlFor="name">
         Add new task
       </label>
-      <input
+      <Input
         onChange={(event) => setName(event.target.value)}
-        className="w-full border rounded px-3 py-2 border-gray-300"
+        className="mb-4"
         id="name"
         type="text"
         placeholder="Enter task..."
       />
-      <button
+      <Button
         onClick={handleAddTask}
-        type="submit"
-        className="bg-pink-500 text-white px-4 py-2 rounded "
+        type="button"
+        variant="outline"
+        className="ml-auto"
       >
         Submit
-      </button>
+      </Button>
     </div>
   );
 };
